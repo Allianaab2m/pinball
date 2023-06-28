@@ -1,0 +1,25 @@
+{
+  "$id": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "compilerOptions": {
+    "noErrorTruncation": true
+  },
+  "lint": {
+    "include": ["src/"],
+    "rules": {
+      "tags": ["recommended"],
+      "exclude": ["no-unused-vars"]
+    }
+  },
+  "fmt": {
+    "useTabs": false,
+    "indentWidth": 2,
+    "semiColons": false,
+    "singleQuote": true
+  },
+  "lock": false,
+  "imports": {
+    "std/": "https://deno.land/std@0.192.0/",
+    "djs": "npm:discord.js"
+  }
+}
