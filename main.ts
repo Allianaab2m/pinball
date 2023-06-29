@@ -35,18 +35,15 @@ client.on(Events.MessageReactionAdd, async (m) => {
   }
 })
 
-client.on(Events.MessageReactionRemove, async (m) => {
-  if (m.partial) {
-    try {
-      await m.fetch()
-    } catch (e) {
-      console.error(e)
-    }
-  }
+client.on(Events.MessageReactionRemove, async (r) => {
+  const reaction = await r.fetch()
 
-  if (m.emoji.name === '📌') {
+  if (
+    reaction.emoji.name === '📌' && reaction.count === 0 &&
+    reaction.message.pinned
+  ) {
     try {
-      await m.message.unpin()
+      await reaction.message.unpin()
     } catch (e) {
       console.error(e)
     }

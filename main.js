@@ -85,37 +85,27 @@ client.on(discord_js_1.Events.MessageReactionAdd, function (m) { return __awaite
         }
     });
 }); });
-client.on(discord_js_1.Events.MessageReactionRemove, function (m) { return __awaiter(void 0, void 0, void 0, function () {
-    var e_3, e_4;
+client.on(discord_js_1.Events.MessageReactionRemove, function (r) { return __awaiter(void 0, void 0, void 0, function () {
+    var reaction, e_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                if (!m.partial) return [3 /*break*/, 4];
-                _a.label = 1;
+            case 0: return [4 /*yield*/, r.fetch()];
             case 1:
-                _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, m.fetch()];
+                reaction = _a.sent();
+                if (!(reaction.emoji.name === '📌' && reaction.count === 0 &&
+                    reaction.message.pinned)) return [3 /*break*/, 5];
+                _a.label = 2;
             case 2:
-                _a.sent();
-                return [3 /*break*/, 4];
+                _a.trys.push([2, 4, , 5]);
+                return [4 /*yield*/, reaction.message.unpin()];
             case 3:
+                _a.sent();
+                return [3 /*break*/, 5];
+            case 4:
                 e_3 = _a.sent();
                 console.error(e_3);
-                return [3 /*break*/, 4];
-            case 4:
-                if (!(m.emoji.name === '📌')) return [3 /*break*/, 8];
-                _a.label = 5;
-            case 5:
-                _a.trys.push([5, 7, , 8]);
-                return [4 /*yield*/, m.message.unpin()];
-            case 6:
-                _a.sent();
-                return [3 /*break*/, 8];
-            case 7:
-                e_4 = _a.sent();
-                console.error(e_4);
-                return [3 /*break*/, 8];
-            case 8: return [2 /*return*/];
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); });
